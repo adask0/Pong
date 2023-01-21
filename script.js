@@ -35,8 +35,9 @@ const moveEnemy = () => {
     if (ballTop > enemyTop) {
         enemy.style.top = `${enemyTop + 1}px`;
     } else {
+        if(ballTop <= 510){
         enemy.style.top = `${enemyTop - 1}px`;
-    }
+    }}
 };
 
 const moveBall = () => {
@@ -65,10 +66,11 @@ const moveBall = () => {
 };
 
 const checkCollision = (paddle) => {
-    let paddleTop = paddle.offsetTop;
-    let paddleBottom = paddleTop + paddle.offsetHeight;
+    let paddleTop = paddle.offsetTop - 20;
+    let paddleBottom = paddle.offsetTop + paddle.offsetHeight;
     let paddleLeft = paddle.offsetLeft - 10;
-    let paddleRight = paddleLeft + paddle.offsetWidth;
+    let paddleRight = paddle.offsetLeft + paddle.offsetWidth + 5;
+    
 
     if (
         ballTop >= paddleTop &&
@@ -78,20 +80,21 @@ const checkCollision = (paddle) => {
     ) {
         ballSpeedX = -ballSpeedX;
     }
-}
 
+}
 const resetBall = () => {
     ballLeft = 490;
     ballTop = 280;
     ball.style.left = `${ballLeft}px`;
     ball.style.top = `${ballTop}px`;
+    player.style.top = '240px';
 };
 
 const start = () => {
-    setInterval(moveEnemy, 60);
-    setInterval(moveBall, 30);
+    setInterval(moveEnemy, 50);
+    setInterval(moveBall, 50);
     section.style.display = 'flex';
     play.style.display = 'none';
 }
 
-result.addEventListener('click', start)
+play.addEventListener('click', start)
