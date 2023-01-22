@@ -16,7 +16,7 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
+    display: none;
 }
 
 h1 {
@@ -64,7 +64,7 @@ h1 {
 }
 
 .play {
-    display: none;
+    display: flex;
     position: absolute;
     font-size: 100px;
     text-align: center;
