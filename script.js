@@ -7,11 +7,12 @@ const play = document.querySelector('.play');
 
 let playerScore = 0;
 let enemyScore = 0;
-let ballSpeedX = 5;
-let ballSpeedY = 5;
+let ballSpeedX = 1;
+let ballSpeedY = 1;
 let ballLeft = 490;
 let ballTop = 280;
 
+const movePlayer = () => {
 document.addEventListener('keydown', (event) => {
     if (event.keyCode === 38) {
         // Up arrow
@@ -27,7 +28,7 @@ document.addEventListener('keydown', (event) => {
         }
     }
 });
-
+}
 
 const moveEnemy = () => {
     let enemyTop = ballTop;
@@ -92,9 +93,10 @@ const resetBall = () => {
 
 const start = () => {
     setInterval(moveEnemy, 50);
-    setInterval(moveBall, 50);
+    setInterval(moveBall, 5);
     section.style.display = 'flex';
     play.style.display = 'none';
+    movePlayer();
 }
 
 play.addEventListener('click', start)
